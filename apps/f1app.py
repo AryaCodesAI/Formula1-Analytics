@@ -34,3 +34,17 @@ st.plotly_chart(fig0)
 
 fig1 = px.bar(df_race, x='TeamId', y='Points', color="TeamId" ,title='Total Points by Team')
 st.plotly_chart(fig1)
+
+fig_anim = px.scatter(df_driver, x='Position', y='Driver', animation_frame='LapNumber', color='Position',
+                      range_x=[1, 20], title='Driver Positions over Laps')
+
+fig_anim.update_traces(marker=dict(size=10))
+fig.update_xaxes(dtick=1)  
+
+fig_anim.update_layout(
+    xaxis=dict(title='Position'),
+    yaxis=dict(title='Driver'),
+    showlegend=False
+)
+
+st.plotly_chart(fig_anim)
